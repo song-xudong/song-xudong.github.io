@@ -1,5 +1,5 @@
 ---
-title: "Paper Title Number 3"
+title: "Bibliometric analysis of vitamin D and obesity research over the period 2000 to 2023"
 collection: publications
 category: manuscripts
 permalink: /publication/testpub1
