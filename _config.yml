@@ -23,7 +23,7 @@ author:
   # Biographic information
   avatar           : "profile1.png"
   name             : "宋旭东"
-  pronouns         :  example: "her"  
+  pronouns         : "her"  
   bio              : "Bioinformatics"
   location         : "China HeNan"
   employer         : "GuangXi University"
