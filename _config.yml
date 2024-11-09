@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Xudong Song | 宋旭东"
+title                    : "Xudong Song"
 title_separator          : "-"
 name                     : &name "宋旭东"
 description              : &description "personal description"
@@ -23,8 +23,8 @@ author:
   # Biographic information
   avatar           : "profile1.png"
   name             : "宋旭东"
-  pronouns         : # example: "she/her"  
-  bio              : "广西大学的学生"
+  pronouns         :  example: "her"  
+  bio              : "Bioinformatics"
   location         : "China HeNan"
   employer         : "GuangXi University"
   uri              : # URL

@@ -1,17 +1,15 @@
 ---
 permalink: /
-title: "个人介绍"
+title: "Personal Introduction"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
+======
+My name is Song Xudong, and I am a master's student in Class 221 of Animal Husbandry at Guangxi University. Currently, I am conducting research in Professor Song Ziyi's research group.During my pursuit of a master's degree, I worked diligently and conscientiously to complete my graduate studies. I was awarded the 2024 National Scholarship for Graduate Students and two first-class academic scholarships for graduate students at Guangxi University, as well as the titles of "Outstanding Student (Academic and Technological Category)" and "Outstanding Student Cadre" at the university level. During my master's degree, I have participated in the publication of 4 SCI papers and 1 national invention patent. Among them, I have published 1 academic paper "Frontiers in Pharmacology" (JCR. Q1, Chinese Academy of Sciences Medical Zone 2, IF=4.4) as the first author in an SCI Zone 2 academic journal, and 1 academic paper "International Journal of Molecular Sciences" (JCR. Q1, Chinese Academy of Sciences Biology Zone 2, IF=4.9) as the second author. In this year's comprehensive evaluation, I won the first place in my class.
 
-我叫宋旭东，是广西大学畜牧学221班的硕士研究生，目前在宋子仪老师的课题组进行科研工作。
-
-在攻读硕士学位期间，我勤奋努力，踏实完成研究生学业课程，获得广西大学2024年研究生国家奖学金、两次研究生一等学业奖学金，并取得校级“优秀学生（学术科技类）”、“优秀学生干部”的称号。硕士期间我已参与发表SCI论文4篇、国家发明专利1项，其中以第一作者身份在SCI二区学术期刊发表学术论文1篇《Frontiers in Pharmacology》(JCR. Q1,中科院医学2区， IF=4.4 )，以第二作者身份发表SCI二区学术论文1篇《International Journal of Molecular Sciences》(JCR. Q1,中科院生物学2区， IF=4.9 )，在今年的综合测评中，我荣获班级第一名。
-
-经过本科阶段和硕士阶段的学习和工作，培养了我的知识技能和对科研的热情。我熟练掌握实验小鼠的饲养、繁育及日常管理，可以完成对实验小鼠活体指标测定和样品的采集工作，并具备扎实的分子生物学实验技能，精通qPCR和Western Blot等技术，能够独立完成实验操作及结果分析。同时，我有较多的数据分析经验，熟练掌握R语言、Python等编程技能，可以通过高性能计算机平台完成序列文件处理，以及后期数据的分析工作。我擅长进行多组学分析,并且拥有较强的学习能力，除了本课题组中常用的转录组、蛋白组、翻译组和16s rRNA分析之外，我也在不断学习基因组、单细胞等分析方法，希望能利用多组学的方式全方面解决生物学问题。
+Through my undergraduate and master's studies and work, I have developed my knowledge, skills, and passion for scientific research. I am proficient in the feeding, breeding, and daily management of experimental mice. I can complete the measurement of live indicators and sample collection of experimental mice, and have solid molecular biology experimental skills. I am proficient in qPCR and Western Blot technologies, and can independently complete experimental operations and result analysis. At the same time, I have extensive experience in data analysis and am proficient in programming skills such as R language and Python. I am able to complete sequence file processing and later data analysis work through high-performance computer platforms. I am skilled in conducting multi omics analysis and have strong learning abilities. In addition to the commonly used transcriptome, proteome, translatome, and 16s rRNA analysis in my research group, I am also constantly learning genomic, single-cell, and other analysis methods, hoping to use multi omics to comprehensively solve biological problems.
 
 Getting started
 ======
