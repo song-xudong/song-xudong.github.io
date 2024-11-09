@@ -1,9 +1,9 @@
 ---
-title: "Teaching experience 2"
+title: "硕士"
 collection: teaching
-type: "广西大学"
+type: "M.Sc."
 permalink: /teaching/2015-spring-teaching-1
-venue: "广西大学, 畜牧学"
+venue: " Guangxi Universitys, Animal Husbandry"
 date: 2024-01-01
 location: "NanNing, China"
 ---
