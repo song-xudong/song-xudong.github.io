@@ -1,0 +1,605 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>转录组上游分析 | 宋旭东</title><meta name="keywords" content="生物信息学,RNA-seq"><meta name="author" content="Song Xudong"><meta name="copyright" content="Song Xudong"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="转录组上游分析"><meta name="application-name" content="转录组上游分析"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="转录组上游分析"><meta property="og:url" content="http://example.com/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/index.html"><meta property="og:site_name" content="宋旭东"><meta property="og:description" content="创建环境conda create -n rna_p3 python&amp;#x3D;3    sra-tools               conda env list                                         #查看环境conda activate rna_p3"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="http://example.com/picture/rna-seq.png"><meta property="article:author" content="Song Xudong"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://example.com/picture/rna-seq.png"><meta name="description" content="创建环境conda create -n rna_p3 python&amp;#x3D;3    sra-tools               conda env list                                         #查看环境conda activate rna_p3"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: undefined,
+  diytitle: {"enable":true,"leaveTitle":"个人主页","backTitle":"个人主页"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: false,
+  mainTone: undefined,
+  authorStatus: {"skills":["🧱 团队小组发动机"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Song Xudong","link":"链接: ","source":"来源: 宋旭东","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '宋旭东',
+  title: '转录组上游分析',
+  postAI: '',
+  pageFillDescription: '创建环境, 上游分析软件下载, 示例文件下载, prefetch下载, 后台批量下载, 查看后台任务, 下载完成, SRA文件转为FASTQ格式, 单个转格式, 批量转格式, md5检查文件完整性, 原始数据质量查看, fastqc, multiqc, 质控, 单个质控, 批量质控, fastp质控, 下载参考基因组, 参考序列及注释下载汇总, 自己构建参考序列索引（可选）, Ensembl数据库, NCBI数据库, GENCODE数据库, UCSC数据库, 构建方法, hisat2比对基因, hisat2单个比对, hisat2批量比对, 查看运行结果, 生成counts表达矩阵, 下载参考基因注释, 类型转换, 转录本相关, 样品的重命名和分组, 文件目录创建环境查看环境进入环境每次开始分析都要进入环境退出当前环境上游分析软件下载软件名版本号例如具体下载可在官网找到下载质控清洗比对计数建议一个个安装顺利完成示例文件下载参考文章找到文章中在网站中选择查找表示为双端测序下载单个下载批量下载后台下载使用超算无法通过提交的方式下载怀疑是任务的网络问题后台批量下载并不是报错按回车继续查看后台任务或者会显示删除后台任务下载完成会在文件中显示下载的进展可查看是否完整下载文件转为格式单个转格式慢的转换太慢了不建议使用将当前使用这个转换多线程转换格式输出的为的文件批量转格式小命令删除当前目录文件夹里的所有分文件夹只保留其文件进行批量转换将所有文件都放在文件夹里设置输入目录设置输出目录遍历目录中的所有文件获取不带路径的文件名使用处理每个文件生成在当前路径下的文件检查文件完整性这样检验似乎并不是很准确需要用数据来源处所给的值进行比对生成值检查要在当前文件夹下原始数据质量查看质控参考单个质控质量测序类型最短长度设定可以忍受的前后重叠的碱基数默认为非常苛刻可以适度放宽因为后一个几乎不可能被测序仪读到双端测序设置输出目录为输入文件批量质控运行目录下包含这个文件夹存放测序数据或方法一这个是标准的单线程循环方式较慢个双端数据大概半个小时慢但是不容易出错设置工作目录为文件所在的目录遍历所有以结尾的文件从文件名中提取没有的部分构建对应的文件名检查对应的文件是否存在如果存在执行命令如果不存在打印错误信息格式文件是处理后得到的数据格式文件是样品处理的结果报告也包括软件运行的参数信息方法二多任务同时进行个双端数据分钟设置工作目录为文件所在的目录遍历所有以结尾的文件从文件名中提取没有的部分构建对应的文件名在后台执行检查和命令检查对应的文件是否存在如果存在执行命令如果不存在打印错误信息等待所有后台进程完成结果再次查看样品质量即为清洗后的序列质控此处为扩展学习下载单个输入双端测序文件输出质控处理后文件和文件结果批量创建清理后的文件夹设置工作目录为文件所在的目录遍历所有以结尾的文件从文件名中提取没有的部分构建对应的文件名在后台执行检查和命令检查对应的文件是否存在如果存在执行命令如果不存在打印错误信息等待所有后台进程完成下载参考基因组参考官网的参考基因下载地址官网提供了人和小鼠的索引文件下载压缩包有文件详细记录了创建索引的过程一般要先构建索引然后进行比对但是人和鼠的索引在官网可直接下载使用构建索引参考下载并解压所需的或的文件下载小鼠参考基因创建文件夹并下载到测试中使用这个另一个参考基因组下载后为同一个文件小鼠还是直接用参考序列及注释下载汇总直接可用的索引和注释下载推荐选择物种下载人基因组参考注释小鼠基因组参考注释自己构建参考序列索引可选下载参考如果不使用则需要这一步数据库参考在数据库找到我们数据的物种参考基因组和注释文件都有很多的版本需要我们根据实际情况进行选择提供两种组装形式和种重复序列处理方式的参考基因组分别是和一般选择或没有的话选择也可分别包含三种类型的和注释文件根据自己需求选择合适注释信息全部的注释信息选择这个就好染色体注释信息预测基因集注释信息如选择数据库我们下载数据库如果只涉及人类和小鼠极力推荐这里有着相较其他数据库最新最全的基因组和其注释信息一般选择数据库因为只有人和鼠的是已经有构建好索引的文件可以直接用但是其他物种还是需要自己进行构建在官网中找到自己的物种自己选择合适的文件下载结果构建方法参考例如数据库中下载小鼠的参考序列用构建注意使用什么软件构建索引就使用什么软件进行比对并使用序列对应的注释下载参考序列和注释选择下载参考基因注释文件使用命令下载基因文件注释文件构建命令需要等待的时间较长可能解压文件构建索引得到个索引文件前面的为自己设置的索引名字结尾为使用自己构建的索引和官方提供的索引进行比较自己索引比对率和官方比对率比较相差无几暂未进行较多尝试值得注意的是自己从数据库中下载的对应注释生成的矩阵需要为之后需要进行转换比对基因单个比对一个样花了分钟多样品记得调整运行时间批量比对比对将双端的文件转为文件文件太大命令中转为就自动删除了结果在文件夹中行中和通过调整的线程数加速运行参考基因组的位置假设你的文件在文件夹中遍历文件夹中的所有文件从文件名中提取查找对应的文件检查文件是否存在使用进行比对并指定输出目录为当前目录指定输出目录为当前目录查看运行结果为运行的报告文件提取关于的结果生成表达矩阵使用计数得到下载参考基因注释为例为注释文件要和比对中的参考基因对应结果在中矩阵注释结果解读类型转换的结果包含基因长度可直接使用进行转换整理为带基因长度的文件我们使原始的数据进行转换改名删除表达量的行提取值提取基因长度基因长度需要转化成每千碱基长度标准化每百万求均值看一看保存数据转录本相关未深入了解使用基于软件简单介绍的视频样品的重命名和分组这部分可省略中根据分组进行修改样品少则手动在中修改也一样下载的数据从中下载在语言中进行修改需要文件文件环境设置多核读取文件对进行处理筛选得到表达矩阵载入第一列设置为列名截取样本基因表达量的部分作为将基因名作为行名更改样品名删除样品名前缀删除样品名后缀导入或构建样本信息进行列样品名的重命名和分组选择所需要的样品信息列手动编辑构建样品名和分组信息更改样品名构建样品名与分组对应的数据框改名保存分组保存用于下游分析的文件改名分组信息文件分组文件目录测试文件下载的源文件解压后的双端文件质控后的序列文件比对后未注释的文件对比后的文件需进行样品重命名参考序列和注释文件按步骤的分析操作文件',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-11-16 10:16:21',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">宋旭东</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Blog</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 总览</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于本人</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><span> 留言板</span></a></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/RNA-seq/" style="font-size: 1.05rem;">RNA-seq<sup>1</sup></a><a href="/tags/%E4%B8%80%E4%BD%9C/" style="font-size: 1.05rem;">一作<sup>1</sup></a><a href="/tags/%E4%BA%8C%E4%BD%9C/" style="font-size: 1.05rem;">二作<sup>1</sup></a><a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 1.05rem;">生物信息学<sup>1</sup></a><a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 1.05rem;">论文<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">3</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" itemprop="url">生物信息学</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>生物信息学</span></a><a class="article-meta__tags" href="/tags/RNA-seq/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>RNA-seq</span></a></span></div></div><h1 class="post-title" itemprop="name headline">转录组上游分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-11-16T02:13:12.415Z" title="发表于 2024-11-16 10:13:12">2024-11-16</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-11-16T02:16:21.192Z" title="更新于 2024-11-16 10:16:21">2024-11-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为南宁"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>南宁</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/picture/rna-seq.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/"><header><a class="post-meta-categories" href="/categories/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" itemprop="url">生物信息学</a><a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" tabindex="-1" itemprop="url">生物信息学</a><a href="/tags/RNA-seq/" tabindex="-1" itemprop="url">RNA-seq</a><h1 id="CrawlerTitle" itemprop="name headline">转录组上游分析</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Song Xudong</span><time itemprop="dateCreated datePublished" datetime="2024-11-16T02:13:12.415Z" title="发表于 2024-11-16 10:13:12">2024-11-16</time><time itemprop="dateCreated datePublished" datetime="2024-11-16T02:16:21.192Z" title="更新于 2024-11-16 10:16:21">2024-11-16</time></header><h1 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a>创建环境</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda create -n rna_p3 python=3    sra-tools               </span><br><span class="line">conda env list                                         #查看环境</span><br><span class="line">conda activate rna_p3                                  #进入conda 环境，每次开始分析都要进入环境！！</span><br><span class="line">conda deactivate                                    #退出当前conda环境</span><br></pre></td></tr></table></figure>
+
+<h1 id="上游分析软件下载"><a href="#上游分析软件下载" class="headerlink" title="上游分析软件下载"></a>上游分析软件下载</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda install -y 软件名=版本号</span><br></pre></td></tr></table></figure>
+
+<p>例如sra-tools</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">conda install bioconda::sra-tools</span><br></pre></td></tr></table></figure>
+
+<p>具体下载可在conda官网找到  <a target="_blank" rel="noopener" href="https://anaconda.org/">https://anaconda.org/</a></p>
+<p>下载 </p>
+<p>质控清洗：fastqc multiqc trim-galore<br>比对计数： hisat2 subread samtools&#x3D;1.6 salmon </p>
+<p>建议一个个安装，顺利完成</p>
+<h1 id="示例文件下载"><a href="#示例文件下载" class="headerlink" title="示例文件下载"></a>示例文件下载</h1><p>参考文章</p>
+<p><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41422-021-00477-x#data-availability">https://www.nature.com/articles/s41422-021-00477-x#data-availability</a></p>
+<p>找到文章中</p>
+<p>All data generated in the current study are available in the Gene Expression Omnibus with accession number GSE154290.</p>
+<p>在NCBI网站中：<a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/">https://www.ncbi.nlm.nih.gov/</a>    </p>
+<p>​							选择GEO DataSets</p>
+<p>​							查找GSE154290</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240801164417712.png" alt="image-20240801164417712"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240801164435455.png" alt="image-20240801164435455"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240805154029037.png" alt="image-20240805154029037"></p>
+<p>PAIRED   表示为双端测序</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240801164513367.png" alt="image-20240801164513367"></p>
+<p>SRA.txt</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SRR12207279</span><br><span class="line">SRR12207280</span><br><span class="line">SRR12207283</span><br><span class="line">SRR12207284</span><br></pre></td></tr></table></figure>
+
+<h2 id="prefetch下载"><a href="#prefetch下载" class="headerlink" title="prefetch下载"></a>prefetch下载</h2><p>单个下载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prefetch SRR1482462</span><br></pre></td></tr></table></figure>
+
+<p>批量下载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">prefetch -f no -p --option-file SRA.txt</span><br></pre></td></tr></table></figure>
+
+<p>后台下载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nohup prefetch SRR12207279 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>##使用超算无法通过提交sbatch的方式下载，怀疑是sbatch任务的网络问题</p>
+<h2 id="后台批量下载"><a href="#后台批量下载" class="headerlink" title="后台批量下载"></a>后台批量下载</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nohup prefetch -f no --option-file SRA.txt &amp;</span><br></pre></td></tr></table></figure>
+
+<p>$ nohup: ignoring input and appending output to ‘nohup.out’  并不是报错，按回车继续</p>
+<h3 id="查看后台任务"><a href="#查看后台任务" class="headerlink" title="查看后台任务"></a>查看后台任务</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jobs</span><br><span class="line"></span><br><span class="line">#或者</span><br><span class="line">ps -f</span><br></pre></td></tr></table></figure>
+
+<p>会显示</p>
+<p>UID         PID   PPID  C STIME TTY          TIME CMD<br>dk_szy   195230 145297  4 15:11 pts&#x2F;2    00:00:00 prefetch -f no –option-file SRA.txt</p>
+<p>删除后台任务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kill -9 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载完成"><a href="#下载完成" class="headerlink" title="下载完成"></a>下载完成</h3><p>会在nohub.out文件中显示下载的进展，可查看是否完整下载</p>
+<h1 id="SRA文件转为FASTQ格式"><a href="#SRA文件转为FASTQ格式" class="headerlink" title="SRA文件转为FASTQ格式"></a>SRA文件转为FASTQ格式</h1><h2 id="单个转格式"><a href="#单个转格式" class="headerlink" title="单个转格式"></a>单个转格式</h2><p>慢的转换，太慢了，不建议使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#将当前</span><br><span class="line">fastq-dump --split-3 --gzip ./SRR12207279</span><br></pre></td></tr></table></figure>
+
+<p>使用这个转换，多线程转换格式，输出的为fq的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fasterq-dump --split-3 ./SRR12207283</span><br></pre></td></tr></table></figure>
+
+<h2 id="批量转格式"><a href="#批量转格式" class="headerlink" title="批量转格式"></a>批量转格式</h2><p>小命令：删除当前目录SRR文件夹里的所有分文件夹，只保留其文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">find ./SRR -mindepth 1 -type d -exec sh -c &#x27;mv &#123;&#125;/* ./SRR; rmdir &#123;&#125;&#x27; \;</span><br></pre></td></tr></table></figure>
+
+<p>fasterq-dump进行批量转换，将所有 .sra 文件都放在SRR文件夹里</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置输入目录</span></span><br><span class="line">sra_dir<span class="operator">=</span><span class="string">&quot;./SRR&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置输出目录</span></span><br><span class="line">output_dir<span class="operator">=</span><span class="string">&quot;./fastq-result&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历目录中的所有.sra文件</span></span><br><span class="line"><span class="keyword">for</span> sra_file <span class="keyword">in</span> <span class="operator">$</span>sra_dir<span class="operator">/</span><span class="operator">*</span>.sra</span><br><span class="line">do</span><br><span class="line">    <span class="comment"># 获取不带路径的文件名</span></span><br><span class="line">    filename<span class="operator">=</span><span class="operator">$</span><span class="punctuation">(</span>basename <span class="string">&quot;$sra_file&quot;</span> .sra<span class="punctuation">)</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 使用fasterq-dump处理每个文件</span></span><br><span class="line">    fasterq<span class="operator">-</span>dump <span class="operator">-</span><span class="operator">-</span>outdir <span class="string">&quot;$output_dir&quot;</span> <span class="operator">-</span><span class="operator">-</span>split<span class="operator">-</span><span class="number">3</span> <span class="string">&quot;$sra_file&quot;</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>生成在当前路径 .&#x2F;fastq-result 下的 fastq 文件</p>
+<h2 id="md5检查文件完整性"><a href="#md5检查文件完整性" class="headerlink" title="md5检查文件完整性"></a>md5检查文件完整性</h2><p>这样检验似乎并不是很准确，需要用数据来源处所给的 md5 值进行比对</p>
+<p>生成md5值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">md5sum *gz &gt;md5.txt</span><br><span class="line">cat md5.txt</span><br></pre></td></tr></table></figure>
+
+<p>检查，要在当前文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">md5sum -c md5.txt</span><br></pre></td></tr></table></figure>
+
+<h1 id="原始数据质量查看"><a href="#原始数据质量查看" class="headerlink" title="原始数据质量查看"></a>原始数据质量查看</h1><h2 id="fastqc"><a href="#fastqc" class="headerlink" title="fastqc"></a>fastqc</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ls ./fastq-result/* | xargs fastqc -t 12 -o   ./fastq-result/</span><br></pre></td></tr></table></figure>
+
+<h2 id="multiqc"><a href="#multiqc" class="headerlink" title="multiqc"></a>multiqc</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">multiqc ./fastq-result/ -o   ./fastq-result/</span><br></pre></td></tr></table></figure>
+
+<h1 id="质控"><a href="#质控" class="headerlink" title="质控"></a>质控</h1><p>trim_galore</p>
+<p>参考： <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?search_click_id=2253394900344533860-1633341597788-628761&sub=&__biz=MzAxMDkxODM1Ng==&mid=2247503527&idx=4&sn=261be2c7ff2a7f80b2e6ab139028d780&chksm=9b4b8e1cac3c070a963f59fcc55095fe0ae37d1eecde3e67f6682779c91d0e907a8fd7eb8f84&scene=3&subscene=10000&clicktime=1633341597&enterid=1633341597&ascene=0&devicetype=android-30&version=28000f35&nettype=cmnet&abtest_cookie=AAACAA==&lang=zh_CN&exportkey=AdXQxZkOzbrJK+UwprsoMEk=&pass_ticket=pvvLsQPcUT6hjrE3KSHbHTaZKL/VtNBVq+LbY9r0hucz/DdbU3NgO9ofB9mtC3fS&wx_header=1">https://mp.weixin.qq.com/s?search_click_id=2253394900344533860-1633341597788-628761&amp;sub=&amp;__biz=MzAxMDkxODM1Ng==&amp;mid=2247503527&amp;idx=4&amp;sn=261be2c7ff2a7f80b2e6ab139028d780&amp;chksm=9b4b8e1cac3c070a963f59fcc55095fe0ae37d1eecde3e67f6682779c91d0e907a8fd7eb8f84&amp;scene=3&amp;subscene=10000&amp;clicktime=1633341597&amp;enterid=1633341597&amp;ascene=0&amp;devicetype=android-30&amp;version=28000f35&amp;nettype=cmnet&amp;abtest_cookie=AAACAA%3D%3D&amp;lang=zh_CN&amp;exportkey=AdXQxZkOzbrJK%2BUwprsoMEk%3D&amp;pass_ticket=pvvLsQPcUT6hjrE3KSHbHTaZKL%2FVtNBVq%2BLbY9r0hucz%2FDdbU3NgO9ofB9mtC3fS&amp;wx_header=1</a></p>
+<h2 id="单个质控"><a href="#单个质控" class="headerlink" title="单个质控"></a>单个质控</h2><p>-q 25  质量</p>
+<p> –phred33 测序类型</p>
+<p> –length 35 最短长度</p>
+<p> –stringency 3 设定可以忍受的前后adapter重叠的碱基数，默认为1（非常苛刻）。可以适度放宽，因为后一个adapter几乎不可能被测序仪读到。</p>
+<p> –paired 双端测序</p>
+<p>-o .&#x2F;clean_data&#x2F;  设置输出目录</p>
+<p>.&#x2F;fastq-result&#x2F;SRR12207279_1.fastq .&#x2F;fastq-result&#x2F;SRR12207279_2.fastq  为输入文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">trim_galore -q 25 --phred33 --length 35 --stringency 3 --paired -o ./clean_data/ ./fastq-result/SRR12207279_1.fastq ./fastq-result/SRR12207279_2.fastq</span><br></pre></td></tr></table></figure>
+
+<h2 id="批量质控"><a href="#批量质控" class="headerlink" title="批量质控"></a>批量质控</h2><p>运行目录下包含  .&#x2F;fastq-result&#x2F; 这个文件夹，存放测序数据 .fastq或 .fastq.gz</p>
+<p>方法一：这个是标准的单线程循环方式，较慢。4个双端数据，大概半个小时，慢但是不容易出错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 设置工作目录为fastq文件所在的目录</span><br><span class="line">cd ./fastq-result/</span><br><span class="line"></span><br><span class="line"># 遍历所有以_1.fastq结尾的文件</span><br><span class="line">for file1 in *_1.fastq</span><br><span class="line">do</span><br><span class="line">    # 从文件名中提取没有_1的部分</span><br><span class="line">    base=$(basename &quot;$file1&quot; _1.fastq)</span><br><span class="line">    </span><br><span class="line">    # 构建对应的_2.fastq文件名</span><br><span class="line">    file2=&quot;$&#123;base&#125;_2.fastq&quot;</span><br><span class="line">    </span><br><span class="line">    # 检查对应的_2.fastq文件是否存在</span><br><span class="line">    if [ -e &quot;$file2&quot; ]; then</span><br><span class="line">        # 如果存在，执行trim_galore命令</span><br><span class="line">        trim_galore -q 25 --phred33 --length 35 --stringency 3 --paired -o ../clean_data/ &quot;$file1&quot; &quot;$file2&quot;</span><br><span class="line">    else</span><br><span class="line">        # 如果不存在，打印错误信息</span><br><span class="line">        echo &quot;Error: No matching file found for $file1&quot;</span><br><span class="line">    fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>fq.gz格式文件是处理后得到的数据，txt格式文件是样品处理的结果报告，也包括软件运行的参数信息</p>
+<p>方法二：多任务同时进行，4个双端数据，10分钟</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 设置工作目录为fastq文件所在的目录</span><br><span class="line">cd ./fastq-result/</span><br><span class="line"></span><br><span class="line"># 遍历所有以_1.fastq结尾的文件</span><br><span class="line">for file1 in *_1.fastq; do</span><br><span class="line">    # 从文件名中提取没有_1的部分</span><br><span class="line">    base=$(basename &quot;$file1&quot; _1.fastq)</span><br><span class="line">    </span><br><span class="line">    # 构建对应的_2.fastq文件名</span><br><span class="line">    file2=&quot;$&#123;base&#125;_2.fastq&quot;</span><br><span class="line">    </span><br><span class="line">    # 在后台执行检查和trim_galore命令</span><br><span class="line">    (</span><br><span class="line">        # 检查对应的_2.fastq文件是否存在</span><br><span class="line">        if [ -e &quot;$file2&quot; ]; then</span><br><span class="line">            # 如果存在，执行trim_galore命令</span><br><span class="line">            trim_galore -q 25 --phred33 --length 35 --stringency 3 --paired -o ../clean_data/ &quot;$file1&quot; &quot;$file2&quot;</span><br><span class="line">        else</span><br><span class="line">            # 如果不存在，打印错误信息</span><br><span class="line">            echo &quot;Error: No matching file found for $file1&quot;</span><br><span class="line">        fi</span><br><span class="line">    ) &amp;</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"># 等待所有后台进程完成</span><br><span class="line">wait</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240803183040309.png" alt="image-20240803183040309"></p>
+<p>再次查看样品质量</p>
+<p>XXXXXX_val_1.fq即为清洗后的序列</p>
+<h2 id="fastp质控"><a href="#fastp质控" class="headerlink" title="fastp质控"></a>fastp质控</h2><p>此处为扩展学习</p>
+<p>conda下载fastp</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># note: the fastp version in bioconda may be not the latest</span><br><span class="line">conda install -c bioconda fastp</span><br></pre></td></tr></table></figure>
+
+<p>单个</p>
+<p>输入 -i -I 双端测序文件 ，输出 -o -O 质控处理后文件，和 json文件，fastp.html结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fastp -i in.R1.fq.gz -I in.R2.fq.gz -o out.R1.fq.gz -O out.R2.fq.gz</span><br></pre></td></tr></table></figure>
+
+<p>批量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建清理后的文件夹</span><br><span class="line">mkdir  clean-fastp</span><br><span class="line"></span><br><span class="line"># 设置工作目录为fastq文件所在的目录</span><br><span class="line">cd ./fastq-result/</span><br><span class="line"></span><br><span class="line"># 遍历所有以_1.fastq结尾的文件</span><br><span class="line">for file1 in *_1.fastq; do</span><br><span class="line">    # 从文件名中提取没有_1的部分</span><br><span class="line">    base=$(basename &quot;$file1&quot; _1.fastq)</span><br><span class="line">    </span><br><span class="line">    # 构建对应的_2.fastq文件名</span><br><span class="line">    file2=&quot;$&#123;base&#125;_2.fastq&quot;</span><br><span class="line">fileoo1=&quot;$&#123;base&#125;_1.fq&quot;</span><br><span class="line">fileoo2=&quot;$&#123;base&#125;_2.fq&quot;</span><br><span class="line">jsono=&quot;$&#123;base&#125;.json&quot;</span><br><span class="line">htmlo=&quot;$&#123;base&#125;.html&quot;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    # 在后台执行检查和trim_galore命令</span><br><span class="line">    (</span><br><span class="line">        # 检查对应的_2.fastq文件是否存在</span><br><span class="line">        if [ -e &quot;$file2&quot; ]; then</span><br><span class="line">            # 如果存在，执行trim_galore命令</span><br><span class="line">		fastp -i &quot;$file1&quot;  -o ../clean-fastp/&quot;$fileoo1&quot; -I &quot;$file2&quot; -O ../clean-fastp/&quot;$fileoo2&quot;  --json  ../clean-fastp/&quot;$jsono&quot;  --html  ../clean-fastp/&quot;$htmlo&quot;</span><br><span class="line">                    else</span><br><span class="line">            # 如果不存在，打印错误信息</span><br><span class="line">            echo &quot;Error: No matching file found for $file1&quot;</span><br><span class="line">        fi</span><br><span class="line">    ) &amp;</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"># 等待所有后台进程完成</span><br><span class="line">wait</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="下载参考基因组"><a href="#下载参考基因组" class="headerlink" title="下载参考基因组"></a>下载参考基因组</h1><p>参考：<a target="_blank" rel="noopener" href="http://www.360doc.com/content/21/0708/21/44561002_985728537.shtml">http://www.360doc.com/content/21/0708/21/44561002_985728537.shtml</a></p>
+<p>Hisat2官网的   UCSC参考基因下载地址  <a target="_blank" rel="noopener" href="https://daehwankimlab.github.io/hisat2/download/#h-sapiens">https://daehwankimlab.github.io/hisat2/download/#h-sapiens</a></p>
+<p>官网提供了人和小鼠的索引文件下载，压缩包有make_grch38_tran.sh文件，详细记录了创建索引的过程。</p>
+<p>一般要先构建索引然后进行比对，但是人和鼠的索引在Hisat2官网可直接下载使用</p>
+<p>构建索引参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mt411J7v8/?spm_id_from=333.337.search-card.all.click&vd_source=b938c9620af06f4224f5fd4db315cbd4">https://www.bilibili.com/video/BV1mt411J7v8/?spm_id_from=333.337.search-card.all.click&amp;vd_source=b938c9620af06f4224f5fd4db315cbd4</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_74093550/article/details/131915068">https://blog.csdn.net/qq_74093550/article/details/131915068</a></p>
+<p>下载并解压所需的 mm10 或 grcm38 的index文件</p>
+<p>下载UCSC mm10，小鼠参考基因，创建文件夹并下载到 .&#x2F;reference  测试中使用这个</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240805141405479.png" alt="image-20240805141405479"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://genome-idx.s3.amazonaws.com/hisat/mm10_genome.tar.gz</span><br><span class="line">tar -zxvf *tar.gz </span><br></pre></td></tr></table></figure>
+
+<p>另一个参考基因组GRCm38，GRCm38下载后为同一个文件？小鼠还是直接用UCSC mm10</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240805141345151.png" alt="image-20240805141345151"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget https://cloud.biohpc.swmed.edu/index.php/s/grcm38/download -O GRCm38.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考序列及注释下载汇总"><a href="#参考序列及注释下载汇总" class="headerlink" title="参考序列及注释下载汇总"></a>参考序列及注释下载汇总</h2><p>直接可用的索引和注释</p>
+<p>UCSC下载，推荐 <a target="_blank" rel="noopener" href="https://hgdownload.soe.ucsc.edu/downloads.html">https://hgdownload.soe.ucsc.edu/downloads.html</a></p>
+<p>选择物种，下载chromFa.tar.gz</p>
+<p>人  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##基因组  UCSC hg38</span><br><span class="line">	https://genome-idx.s3.amazonaws.com/hisat/hg38_genome.tar.gz</span><br><span class="line">##参考注释</span><br><span class="line">	https://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.refGene.gtf.gz</span><br></pre></td></tr></table></figure>
+
+<p>小鼠</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">##基因组  UCSC mm10</span><br><span class="line">	https://genome-idx.s3.amazonaws.com/hisat/mm10_genome.tar.gz</span><br><span class="line">##参考注释</span><br><span class="line">	https://hgdownload.soe.ucsc.edu/goldenPath/mm10/bigZips/genes/mm10.refGene.gtf.gz</span><br></pre></td></tr></table></figure>
+
+<h2 id="自己构建参考序列索引（可选）"><a href="#自己构建参考序列索引（可选）" class="headerlink" title="自己构建参考序列索引（可选）"></a>自己构建参考序列索引（可选）</h2><p>下载参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011262253/article/details/117486244">https://blog.csdn.net/u011262253/article/details/117486244</a></p>
+<p>如果不使用UCSC则需要这一步</p>
+<h3 id="Ensembl数据库"><a href="#Ensembl数据库" class="headerlink" title="Ensembl数据库"></a>Ensembl数据库</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/flashan_shensanceng/article/details/115705200">https://blog.csdn.net/flashan_shensanceng/article/details/115705200</a></p>
+<p>在Ensembl数据库：<a target="_blank" rel="noopener" href="https://asia.ensembl.org/index.html">https://asia.ensembl.org/index.html</a></p>
+<p>找到我们数据的物种</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240806182532687.png" alt="image-20240806182532687"></p>
+<p><strong>参考基因组和注释文件都有很多的版本，需要我们根据实际情况进行选择</strong></p>
+<p>Ensemble提供两种组装形式和3种重复序列处理方式的参考基因组，分别是primary、toplevel 、unmasked(dna) 、soft-masked(dna_sm) 和masked(dna_rm) 。</p>
+<p>一般选择   <strong>.dna.primary或.dna_sm.primary</strong>！！！！！！</p>
+<p>没有的话选择   <strong>.dna.toplevel.fa.gz</strong> 也可</p>
+<p> 分别包含三种类型的.gtf（general tranfer format）和.gff（general feature format）注释文件，根据自己需求选择合适注释信息</p>
+<ol>
+<li>gtf：全部的注释信息，选择这个就好</li>
+<li>chr：染色体注释信息</li>
+<li>abinitio：预测基因集注释信息</li>
+</ol>
+<p>如选择：</p>
+<p><a target="_blank" rel="noopener" href="https://ftp.ensembl.org/pub/release-112/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz">Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz</a></p>
+<p><a target="_blank" rel="noopener" href="https://ftp.ensembl.org/pub/release-112/gtf/homo_sapiens/Homo_sapiens.GRCh38.112.gtf.gz">Homo_sapiens.GRCh38.112.gtf.gz</a></p>
+<h3 id="NCBI数据库"><a href="#NCBI数据库" class="headerlink" title="NCBI数据库"></a>NCBI数据库</h3><p><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/datasets/genome/">https://www.ncbi.nlm.nih.gov/datasets/genome/</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240806184009539.png" alt="image-20240806184009539"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240806184101829.png" alt="image-20240806184101829"></p>
+<p>我们下载</p>
+<p>Genome sequences (FASTA)</p>
+<p>Annotation features (GTF)</p>
+<h3 id="GENCODE数据库"><a href="#GENCODE数据库" class="headerlink" title="GENCODE数据库"></a>GENCODE数据库</h3><p>如果只涉及人类和小鼠，极力推荐 GENCOE，这里有着相较其他数据库，最新最全的基因组和其注释信息。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240806185050209.png" alt="image-20240806185050209"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240806185112023.png" alt="image-20240806185112023"></p>
+<p>一般选择</p>
+<table>
+<thead>
+<tr>
+<th>Genome sequence (GRCh38.p14)</th>
+<th>ALL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Comprehensive gene annotation</td>
+<td>CHR</td>
+</tr>
+</tbody></table>
+<h3 id="UCSC数据库"><a href="#UCSC数据库" class="headerlink" title="UCSC数据库"></a>UCSC数据库</h3><p>因为只有人和鼠的是已经有构建好索引的文件可以直接用，但是其他物种还是需要自己进行构建</p>
+<p>在官网中找到自己的物种  <a target="_blank" rel="noopener" href="https://hgdownload.soe.ucsc.edu/downloads.html">https://hgdownload.soe.ucsc.edu/downloads.html</a></p>
+<p>自己选择合适的文件</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240807163219749.png" alt="image-20240807163219749"></p>
+<p>下载结果</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240807181922011.png" alt="image-20240807181922011"></p>
+<h3 id="构建方法"><a href="#构建方法" class="headerlink" title="构建方法"></a>构建方法</h3><p>参考  <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40640700/article/details/116891230">https://blog.csdn.net/weixin_40640700/article/details/116891230</a></p>
+<p>例如Ensembl数据库中下载小鼠的参考序列，用  hisat2 构建，</p>
+<p>注意，使用什么软件构建索引，就使用什么软件进行比对，并使用序列对应的注释</p>
+<p>下载参考序列和注释  <a target="_blank" rel="noopener" href="https://asia.ensembl.org/Mus_musculus/Info/Index">https://asia.ensembl.org/Mus_musculus/Info/Index</a></p>
+<p>选择下载<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240902110039833.png" alt="image-20240902110039833"></p>
+<p>参考基因  Mus_musculus.GRCm39.dna.primary_assembly.fa.gz</p>
+<p>注释文件  Mus_musculus.GRCm39.112.gtf.gz</p>
+<p>使用命令下载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#基因文件</span><br><span class="line">wget -c https://ftp.ensembl.org/pub/release-112/fasta/mus_musculus/dna/Mus_musculus.GRCm39.dna.primary_assembly.fa.gz</span><br><span class="line">#注释文件</span><br><span class="line">wget  -c https://ftp.ensembl.org/pub/release-112/gtf/mus_musculus/Mus_musculus.GRCm39.112.gtf.gz</span><br></pre></td></tr></table></figure>
+
+<p>构建命令，需要等待的时间较长，可能1-2h</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#解压文件</span><br><span class="line">gzip -d Mus_musculus.GRCm39.dna.primary_assembly.fa.gz</span><br><span class="line">#hisat2构建索引</span><br><span class="line">hisat2-build -p 20  Mus_musculus.GRCm39.dna.primary_assembly.fa mousegenome</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240903100450370.png" alt="image-20240903100450370"></p>
+<p>得到8个索引文件，前面的  MusGRCm39 为自己设置的索引名字，结尾为 ht2</p>
+<p>使用自己构建的索引和官方提供的索引进行比较</p>
+<p>自己索引比对率和官方比对率比较，相差无几</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240903100856364.png" alt="image-20240903100856364"></p>
+<p>暂未进行较多尝试</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">samtools sort -@ 12 -o ./688.bam ./6668888.sam</span><br><span class="line">samtools sort -@ 12 -o ./677.bam ./666777.sam</span><br><span class="line"></span><br><span class="line">gtf=&#x27;/public/home/dk_szy/songxudong/rna-test/reference/mouse-Ensembl-bowtie2/gft/Mus_musculus.GRCm39.112.gtf.gz&#x27;</span><br><span class="line">gtf0=&#x27;/public/home/dk_szy/songxudong/rna-test/reference/mouse-UCSC-mm10/gft/mm10.refGene.gtf.gz&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">featureCounts -T  20  -p  -a  $gtf  -o  counts.txt  ./688.bam</span><br><span class="line"></span><br><span class="line">featureCounts -T  20  -p  -a  $gtf0  -o  counts0.txt  ./677.bam</span><br></pre></td></tr></table></figure>
+
+<p>值得注意的是自己从Ensembl数据库中下载的对应注释，生成的count矩阵需要geneid为 ENSMUSG00000104478，之后需要进行ID转换</p>
+<h1 id="hisat2比对基因"><a href="#hisat2比对基因" class="headerlink" title="hisat2比对基因"></a>hisat2比对基因</h1><h2 id="hisat2单个比对"><a href="#hisat2单个比对" class="headerlink" title="hisat2单个比对"></a>hisat2单个比对</h2><p>一个样，花了8分钟，多样品记得调整运行时间</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index=&#x27;/public/home/dk_szy/songxudong/rna-test/reference/mm10/genome&#x27;</span><br><span class="line"></span><br><span class="line">    id=234234214</span><br><span class="line"></span><br><span class="line">    file1=&quot;./clean_data/SRR12207279_1_val_1.fq&quot;</span><br><span class="line">	</span><br><span class="line">file2=&quot;./clean_data/SRR12207279_2_val_2.fq&quot;</span><br><span class="line"></span><br><span class="line">echo $file1</span><br><span class="line">echo $file2</span><br><span class="line">echo &quot;$&#123;id&#125;.sam&quot; </span><br><span class="line">        hisat2 -t -p 12 -x $index \</span><br><span class="line">    -1 &quot;$file1&quot; \</span><br><span class="line">    -2 &quot;$file2&quot; \</span><br><span class="line">    -S &quot;$&#123;id&#125;.sam&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="hisat2批量比对"><a href="#hisat2批量比对" class="headerlink" title="hisat2批量比对"></a>hisat2批量比对</h2><p> hisat2</p>
+<p>比对将双端的fq文件转为》sam文件》bam文件</p>
+<p>sam太大，命令中转为bam就自动删除了</p>
+<p>结果在  .&#x2F;align&#x2F;  文件夹中 </p>
+<p>25行  hisat2 -t -p 20  -x $index \  中和通过调整 -p 20 的线程数加速运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">mkdir -p ./align/flag</span><br><span class="line">cd ./align/</span><br><span class="line">pwd</span><br><span class="line"></span><br><span class="line">##参考基因组的位置</span><br><span class="line">index=&#x27;/public/home/dk_szy/songxudong/rna-test/reference/mm10/genome&#x27;</span><br><span class="line"></span><br><span class="line"># 假设你的fastq文件在fastq-result文件夹中</span><br><span class="line">fastq_dir=&quot;../clean_data&quot;</span><br><span class="line"></span><br><span class="line"># 遍历fastq-result文件夹中的所有1.fastq文件</span><br><span class="line">for file1 in $fastq_dir/*_1_val_1.fq; do</span><br><span class="line">    # 从1.fastq文件名中提取ID</span><br><span class="line">    id=$(basename &quot;$file1&quot; .fq | sed &#x27;s/_1_val_1//&#x27;)</span><br><span class="line">    </span><br><span class="line">    # 查找对应的2.fastq文件</span><br><span class="line">    file2=&quot;$fastq_dir/$&#123;id&#125;_2_val_2.fq&quot;</span><br><span class="line">    </span><br><span class="line">    # 检查2.fastq文件是否存在</span><br><span class="line">    if [ -f &quot;$file2&quot; ]; then</span><br><span class="line">        echo &quot;333#  $&#123;id&#125;  ！！！！！ is on the hisat2 Working !!!&quot;</span><br><span class="line">        </span><br><span class="line">        # 使用hisat2进行比对，并指定输出目录为当前目录（./align/）</span><br><span class="line">        hisat2 -t -p 20  -x $index \</span><br><span class="line">            -1 &quot;$file1&quot; \</span><br><span class="line">            -2 &quot;$file2&quot;  -S  &quot;$&#123;id&#125;.sam&quot; </span><br><span class="line">        </span><br><span class="line">        # sam2bam and remove sam，指定输出目录为当前目录（./align/）</span><br><span class="line">        echo -e &quot; $&#123;id&#125; sam2bam and remove sam   &quot;</span><br><span class="line">        samtools sort -@ 12 -o &quot;./$&#123;id&#125;_sorted.bam&quot; &quot;./$&#123;id&#125;.sam&quot;</span><br><span class="line">        rm &quot;./$&#123;id&#125;.sam&quot;</span><br><span class="line">    else</span><br><span class="line">        echo &quot;No matching 2.fastq file found for $file1&quot;</span><br><span class="line">    fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看运行结果"><a href="#查看运行结果" class="headerlink" title="查看运行结果"></a>查看运行结果</h2><p>grep alignment slurm-555095.out 为运行的报告文件，提取关于alignment的结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grep alignment slurm-555095.out</span><br></pre></td></tr></table></figure>
+
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240805090435619.png" alt="image-20240805090435619"></p>
+<h1 id="生成counts表达矩阵"><a href="#生成counts表达矩阵" class="headerlink" title="生成counts表达矩阵"></a>生成counts表达矩阵</h1><p>使用featureCounts 计数得到</p>
+<h2 id="下载参考基因注释"><a href="#下载参考基因注释" class="headerlink" title="下载参考基因注释"></a>下载参考基因注释</h2><p>UCSC mm10 为例</p>
+<p><a target="_blank" rel="noopener" href="https://hgdownload.soe.ucsc.edu/goldenPath/mm10/bigZips/genes/">https://hgdownload.soe.ucsc.edu/goldenPath/mm10/bigZips/genes/</a>  </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240805104440947.png" alt="image-20240805104440947"></p>
+<p>gtf&#x3D;’&#x2F;public&#x2F;home&#x2F;dk_szy&#x2F;songxudong&#x2F;rna-test&#x2F;reference&#x2F;gft&#x2F;mm10.refGene.gtf.gz’  为注释文件，<strong>要和比对中的参考基因对应</strong>！！！</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">date</span><br><span class="line"></span><br><span class="line">gtf=&#x27;/public/home/dk_szy/songxudong/rna-test/reference/gft/mm10.refGene.gtf.gz&#x27;</span><br><span class="line"></span><br><span class="line">mkdir  -p  ./counts</span><br><span class="line"></span><br><span class="line">cd ./counts</span><br><span class="line"></span><br><span class="line">pwd</span><br><span class="line"></span><br><span class="line">featureCounts -T  20  -p  -a  $gtf  -o  counts.txt  ../align/*.bam</span><br><span class="line"></span><br><span class="line">multiqc ./</span><br><span class="line"></span><br><span class="line">echo -e &quot; \n \n \n ALL WORK DONE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  \n &quot;</span><br><span class="line">date</span><br></pre></td></tr></table></figure>
+
+<p>结果在.&#x2F;counts中</p>
+<p>count矩阵 counts.txt</p>
+<p>注释结果解读  multiqc_report.html</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>featureCounts的结果包含基因长度，可直接使用进行转换</p>
+<p>整理为带基因长度的文件</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240816162701639.png" alt="image-20240816162701639"></p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#我们使原始的count数据进行转换</span></span><br><span class="line">exprSet<span class="operator">&lt;-</span>read.csv<span class="punctuation">(</span><span class="string">&quot;count-改名.csv&quot;</span><span class="punctuation">,</span>row.names <span class="operator">=</span> <span class="number">1</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除表达量=0的行</span></span><br><span class="line">exprSet1 <span class="operator">&lt;-</span> exprSet<span class="punctuation">[</span>rowSums<span class="punctuation">(</span>exprSet<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">2</span><span class="operator">:</span>ncol<span class="punctuation">(</span>exprSet<span class="punctuation">)</span><span class="punctuation">]</span><span class="punctuation">)</span> <span class="operator">&gt;</span> <span class="number">0</span><span class="punctuation">,</span><span class="punctuation">]</span></span><br><span class="line"><span class="built_in">dim</span><span class="punctuation">(</span>exprSet<span class="punctuation">)</span></span><br><span class="line"><span class="built_in">names</span><span class="punctuation">(</span>exprSet<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##提取Count值</span></span><br><span class="line">count <span class="operator">&lt;-</span> exprSet1<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">2</span><span class="operator">:</span>ncol<span class="punctuation">(</span>exprSet<span class="punctuation">)</span><span class="punctuation">]</span></span><br><span class="line">write.csv<span class="punctuation">(</span>count<span class="punctuation">,</span><span class="string">&quot;song_count.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">##提取基因长度，基因长度需要转化成kb</span></span><br><span class="line">gene_length_kb <span class="operator">&lt;-</span> exprSet1<span class="operator">$</span>Length <span class="operator">/</span> <span class="number">1000</span></span><br><span class="line">head<span class="punctuation">(</span>gene_length_kb<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#CPM</span></span><br><span class="line">cpm <span class="operator">=</span> log2<span class="punctuation">(</span>edgeR<span class="operator">::</span>cpm<span class="punctuation">(</span>count<span class="punctuation">)</span><span class="operator">+</span><span class="number">1</span><span class="punctuation">)</span></span><br><span class="line">write.csv<span class="punctuation">(</span>cpm<span class="punctuation">,</span><span class="string">&quot;song_CPM.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">##TPM</span></span><br><span class="line"><span class="comment">### 每千碱基reads（per million scaling factor)长度标准化</span></span><br><span class="line">data_rpk <span class="operator">&lt;-</span> count <span class="operator">/</span>gene_length_kb</span><br><span class="line"><span class="comment">##每百万</span></span><br><span class="line">TPM <span class="operator">&lt;-</span> t<span class="punctuation">(</span>t<span class="punctuation">(</span>data_rpk<span class="punctuation">)</span> <span class="operator">/</span> colSums<span class="punctuation">(</span>data_rpk<span class="punctuation">)</span> <span class="operator">*</span> <span class="number">1000000</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>TPM<span class="punctuation">)</span></span><br><span class="line"><span class="comment">## 求均值，看一看</span></span><br><span class="line">avg_tmp <span class="operator">&lt;-</span> data.frame<span class="punctuation">(</span>avg_tmp <span class="operator">=</span> rowMeans<span class="punctuation">(</span>TPM<span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>avg_tmp<span class="punctuation">)</span></span><br><span class="line"><span class="comment">##保存数据</span></span><br><span class="line">write.csv<span class="punctuation">(</span>TPM<span class="punctuation">,</span><span class="string">&quot;song_TPM.csv&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##FPKM</span></span><br><span class="line">FPKM <span class="operator">&lt;-</span> t<span class="punctuation">(</span>t<span class="punctuation">(</span>data_rpk<span class="punctuation">)</span> <span class="operator">/</span> colSums<span class="punctuation">(</span>count <span class="punctuation">)</span> <span class="operator">*</span> <span class="number">10</span><span class="operator">^</span><span class="number">6</span><span class="punctuation">)</span></span><br><span class="line">write.csv<span class="punctuation">(</span>TPM<span class="punctuation">,</span><span class="string">&quot;song_FPKM.csv&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="转录本相关"><a href="#转录本相关" class="headerlink" title="转录本相关"></a>转录本相关</h1><p>未深入了解使用</p>
+<p>基于PASA软件</p>
+<p>简单介绍的视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KE421g7kT?t=3053.0&p=7">https://www.bilibili.com/video/BV1KE421g7kT?t=3053.0&amp;p=7</a></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20241024163759421.png" alt="image-20241024163759421"></p>
+<h1 id="样品的重命名和分组"><a href="#样品的重命名和分组" class="headerlink" title="样品的重命名和分组"></a>样品的重命名和分组</h1><p>这部分可省略</p>
+<p>counts.txt 中根据分组进行修改，样品少则手动在 Excel 中修改也一样</p>
+<p>下载的数据从ncbi中下载 Metadata</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240805111958493.png" alt="image-20240805111958493"></p>
+<p>在R语言中进行修改</p>
+<p>需要</p>
+<p>Metadata文件  SraRunTable.txt</p>
+<p>count文件  counts.txt</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">###环境设置</span></span><br><span class="line">rm<span class="punctuation">(</span><span class="built_in">list</span><span class="operator">=</span>ls<span class="punctuation">(</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">options<span class="punctuation">(</span>stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span> </span><br><span class="line">library<span class="punctuation">(</span>tidyverse<span class="punctuation">)</span> <span class="comment"># ggplot2 stringer dplyr tidyr readr purrr  tibble forcats</span></span><br><span class="line">library<span class="punctuation">(</span>data.table<span class="punctuation">)</span> <span class="comment">#多核读取文件</span></span><br><span class="line">setwd<span class="punctuation">(</span><span class="string">&quot;C:/Users/Lenovo/Desktop/test&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 对counts进行处理筛选得到表达矩阵 ####</span></span><br><span class="line">a1 <span class="operator">&lt;-</span> fread<span class="punctuation">(</span><span class="string">&#x27;./counts.txt&#x27;</span><span class="punctuation">,</span></span><br><span class="line">            header <span class="operator">=</span> <span class="built_in">T</span><span class="punctuation">,</span>data.table <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span><span class="comment">#载入counts，第一列设置为列名</span></span><br><span class="line">colnames<span class="punctuation">(</span>a1<span class="punctuation">)</span></span><br><span class="line">counts <span class="operator">&lt;-</span> a1<span class="punctuation">[</span><span class="punctuation">,</span><span class="number">7</span><span class="operator">:</span>ncol<span class="punctuation">(</span>a1<span class="punctuation">)</span><span class="punctuation">]</span> <span class="comment">#截取样本基因表达量的counts部分作为counts </span></span><br><span class="line">rownames<span class="punctuation">(</span>counts<span class="punctuation">)</span> <span class="operator">&lt;-</span> a1<span class="operator">$</span>Geneid <span class="comment">#将基因名作为行名</span></span><br><span class="line"><span class="comment">#更改样品名</span></span><br><span class="line">colnames<span class="punctuation">(</span>counts<span class="punctuation">)</span></span><br><span class="line">colnames<span class="punctuation">(</span>counts<span class="punctuation">)</span> <span class="operator">&lt;-</span> gsub<span class="punctuation">(</span><span class="string">&#x27;../align/&#x27;</span><span class="punctuation">,</span><span class="string">&#x27;&#x27;</span><span class="punctuation">,</span> <span class="comment">#删除样品名前缀</span></span><br><span class="line">                         gsub<span class="punctuation">(</span><span class="string">&#x27;_sorted.bam&#x27;</span><span class="punctuation">,</span><span class="string">&#x27;&#x27;</span><span class="punctuation">,</span>  colnames<span class="punctuation">(</span>counts<span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span> <span class="comment">#删除样品名后缀</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### 导入或构建样本信息,  进行列样品名的重命名和分组####</span></span><br><span class="line">b <span class="operator">&lt;-</span> read.csv<span class="punctuation">(</span><span class="string">&#x27;./SraRunTable.txt&#x27;</span><span class="punctuation">)</span></span><br><span class="line">b</span><br><span class="line">name_list <span class="operator">&lt;-</span> b<span class="operator">$</span>source_name<span class="punctuation">[</span>match<span class="punctuation">(</span>colnames<span class="punctuation">(</span>counts<span class="punctuation">)</span><span class="punctuation">,</span>b<span class="operator">$</span>Run<span class="punctuation">)</span><span class="punctuation">]</span>; name_list  <span class="comment">#选择所需要的样品信息列</span></span><br><span class="line">nlgl <span class="operator">&lt;-</span> data.frame<span class="punctuation">(</span>row.names<span class="operator">=</span>colnames<span class="punctuation">(</span>counts<span class="punctuation">)</span><span class="punctuation">,</span></span><br><span class="line">                   name_list<span class="operator">=</span>name_list<span class="punctuation">,</span></span><br><span class="line">                   group_list<span class="operator">=</span>name_list<span class="punctuation">)</span></span><br><span class="line">fix<span class="punctuation">(</span>nlgl<span class="punctuation">)</span>  <span class="comment">#手动编辑构建样品名和分组信息</span></span><br><span class="line">name_list <span class="operator">&lt;-</span> nlgl<span class="operator">$</span>name_list</span><br><span class="line">colnames<span class="punctuation">(</span>counts<span class="punctuation">)</span> <span class="operator">&lt;-</span> name_list <span class="comment">#更改样品名</span></span><br><span class="line">group_list <span class="operator">&lt;-</span> nlgl<span class="operator">$</span>group_list</span><br><span class="line">gl <span class="operator">&lt;-</span> data.frame<span class="punctuation">(</span>row.names<span class="operator">=</span>colnames<span class="punctuation">(</span>counts<span class="punctuation">)</span><span class="punctuation">,</span> <span class="comment">#构建样品名与分组对应的数据框</span></span><br><span class="line">                 group_list<span class="operator">=</span>group_list<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">write.csv<span class="punctuation">(</span>counts<span class="punctuation">,</span>file <span class="operator">=</span> <span class="string">&quot;count-改名.csv&quot;</span><span class="punctuation">)</span> <span class="comment">#保存</span></span><br><span class="line">write.csv<span class="punctuation">(</span>nlgl<span class="punctuation">,</span>file <span class="operator">=</span> <span class="string">&quot;分组.csv&quot;</span><span class="punctuation">)</span> <span class="comment">#保存</span></span><br></pre></td></tr></table></figure>
+
+<p>用于下游分析的文件  count-改名.csv<br>分组信息文件  分组.csv</p>
+<h1 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20240805171736813.png" alt="image-20240805171736813"></p>
+<p>test ：测试文件</p>
+<p>SRR：下载的源文件</p>
+<p>fastq-result：解压后的双端文件</p>
+<p>clean_data：质控后的序列文件</p>
+<p>align：比对后未注释的文件</p>
+<p>counts：对比后的count文件，需进行样品重命名</p>
+<p>reference：参考序列和注释文件</p>
+<p>.sh  按步骤的分析操作文件  sbatch XXX.sh</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Song Xudong</div><div class="post-copyright__author_desc">加油！</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/')">转录组上游分析</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=转录组上游分析&amp;url=http://example.com/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/&amp;pic=/picture/rna-seq.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">宋旭东</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>生物信息学<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/RNA-seq/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>RNA-seq<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/picture/rna-seq.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/11/16/%E8%AE%BA%E6%96%872/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20241116094650564.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Termite Fungus Comb Polysaccharides Alleviate Hyperglycemia and Hyperlipidemia in Type 2 Diabetic Mice by Regulating Hepatic Glucose/Lipid Metabolism and the Gut Microbiota</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">生物信息学</b>相关的学习经历和成果，还有<b style="color:#fff">个人经历</b>和<b style="color:#fff">日常分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">Song Xudong</h1><div class="author-info__desc">加油！</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/song-xudong" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">博客还在建设中，更多内容正在迁移，欢迎你的来访！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">创建环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">上游分析软件下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">示例文件下载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#prefetch%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.1.</span> <span class="toc-text">prefetch下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.2.</span> <span class="toc-text">后台批量下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%90%8E%E5%8F%B0%E4%BB%BB%E5%8A%A1"><span class="toc-number">3.2.1.</span> <span class="toc-text">查看后台任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%88%90"><span class="toc-number">3.2.2.</span> <span class="toc-text">下载完成</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SRA%E6%96%87%E4%BB%B6%E8%BD%AC%E4%B8%BAFASTQ%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">SRA文件转为FASTQ格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E8%BD%AC%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">单个转格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E8%BD%AC%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">批量转格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#md5%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6%E5%AE%8C%E6%95%B4%E6%80%A7"><span class="toc-number">4.3.</span> <span class="toc-text">md5检查文件完整性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F%E6%9F%A5%E7%9C%8B"><span class="toc-number">5.</span> <span class="toc-text">原始数据质量查看</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#fastqc"><span class="toc-number">5.1.</span> <span class="toc-text">fastqc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multiqc"><span class="toc-number">5.2.</span> <span class="toc-text">multiqc</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%A8%E6%8E%A7"><span class="toc-number">6.</span> <span class="toc-text">质控</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E8%B4%A8%E6%8E%A7"><span class="toc-number">6.1.</span> <span class="toc-text">单个质控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E8%B4%A8%E6%8E%A7"><span class="toc-number">6.2.</span> <span class="toc-text">批量质控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fastp%E8%B4%A8%E6%8E%A7"><span class="toc-number">6.3.</span> <span class="toc-text">fastp质控</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84"><span class="toc-number">7.</span> <span class="toc-text">下载参考基因组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%BA%8F%E5%88%97%E5%8F%8A%E6%B3%A8%E9%87%8A%E4%B8%8B%E8%BD%BD%E6%B1%87%E6%80%BB"><span class="toc-number">7.1.</span> <span class="toc-text">参考序列及注释下载汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E6%9E%84%E5%BB%BA%E5%8F%82%E8%80%83%E5%BA%8F%E5%88%97%E7%B4%A2%E5%BC%95%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">7.2.</span> <span class="toc-text">自己构建参考序列索引（可选）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ensembl%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">7.2.1.</span> <span class="toc-text">Ensembl数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NCBI%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">7.2.2.</span> <span class="toc-text">NCBI数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GENCODE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">7.2.3.</span> <span class="toc-text">GENCODE数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UCSC%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">7.2.4.</span> <span class="toc-text">UCSC数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%96%B9%E6%B3%95"><span class="toc-number">7.2.5.</span> <span class="toc-text">构建方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hisat2%E6%AF%94%E5%AF%B9%E5%9F%BA%E5%9B%A0"><span class="toc-number">8.</span> <span class="toc-text">hisat2比对基因</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hisat2%E5%8D%95%E4%B8%AA%E6%AF%94%E5%AF%B9"><span class="toc-number">8.1.</span> <span class="toc-text">hisat2单个比对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hisat2%E6%89%B9%E9%87%8F%E6%AF%94%E5%AF%B9"><span class="toc-number">8.2.</span> <span class="toc-text">hisat2批量比对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">8.3.</span> <span class="toc-text">查看运行结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9F%E6%88%90counts%E8%A1%A8%E8%BE%BE%E7%9F%A9%E9%98%B5"><span class="toc-number">9.</span> <span class="toc-text">生成counts表达矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E6%B3%A8%E9%87%8A"><span class="toc-number">9.1.</span> <span class="toc-text">下载参考基因注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">9.2.</span> <span class="toc-text">类型转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AC%E5%BD%95%E6%9C%AC%E7%9B%B8%E5%85%B3"><span class="toc-number">10.</span> <span class="toc-text">转录本相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E5%93%81%E7%9A%84%E9%87%8D%E5%91%BD%E5%90%8D%E5%92%8C%E5%88%86%E7%BB%84"><span class="toc-number">11.</span> <span class="toc-text">样品的重命名和分组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">12.</span> <span class="toc-text">文件目录</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/" title="转录组上游分析"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/rna-seq.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="转录组上游分析"/></a><div class="content"><a class="title" href="/2024/11/16/%E8%BD%AC%E5%BD%95%E7%BB%84%E4%B8%8A%E6%B8%B8%E5%88%86%E6%9E%90/" title="转录组上游分析">转录组上游分析</a><time datetime="2024-11-16T02:13:12.415Z" title="发表于 2024-11-16 10:13:12">2024-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/16/%E8%AE%BA%E6%96%872/" title="Termite Fungus Comb Polysaccharides Alleviate Hyperglycemia and Hyperlipidemia in Type 2 Diabetic Mice by Regulating Hepatic Glucose/Lipid Metabolism and the Gut Microbiota"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20241116094650564.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Termite Fungus Comb Polysaccharides Alleviate Hyperglycemia and Hyperlipidemia in Type 2 Diabetic Mice by Regulating Hepatic Glucose/Lipid Metabolism and the Gut Microbiota"/></a><div class="content"><a class="title" href="/2024/11/16/%E8%AE%BA%E6%96%872/" title="Termite Fungus Comb Polysaccharides Alleviate Hyperglycemia and Hyperlipidemia in Type 2 Diabetic Mice by Regulating Hepatic Glucose/Lipid Metabolism and the Gut Microbiota">Termite Fungus Comb Polysaccharides Alleviate Hyperglycemia and Hyperlipidemia in Type 2 Diabetic Mice by Regulating Hepatic Glucose/Lipid Metabolism and the Gut Microbiota</a><time datetime="2024-11-16T01:43:30.108Z" title="发表于 2024-11-16 09:43:30">2024-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/16/%E8%AE%BA%E6%96%871/" title="Bibliometric analysis of vitamin D and obesity research over the period 2000 to 2023"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/picture/image-20241116093701587.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bibliometric analysis of vitamin D and obesity research over the period 2000 to 2023"/></a><div class="content"><a class="title" href="/2024/11/16/%E8%AE%BA%E6%96%871/" title="Bibliometric analysis of vitamin D and obesity research over the period 2000 to 2023">Bibliometric analysis of vitamin D and obesity research over the period 2000 to 2023</a><time datetime="2024-11-16T01:25:33.249Z" title="发表于 2024-11-16 09:25:33">2024-11-16</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Song Xudong</div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">2</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> Blog</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 总览</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><span> 关于本人</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><span> 留言板</span></a></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/RNA-seq/" style="font-size: 0.88rem;">RNA-seq<sup>1</sup></a><a href="/tags/%E4%B8%80%E4%BD%9C/" style="font-size: 0.88rem;">一作<sup>1</sup></a><a href="/tags/%E4%BA%8C%E4%BD%9C/" style="font-size: 0.88rem;">二作<sup>1</sup></a><a href="/tags/%E7%94%9F%E7%89%A9%E4%BF%A1%E6%81%AF%E5%AD%A6/" style="font-size: 0.88rem;">生物信息学<sup>1</sup></a><a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 0.88rem;">论文<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("10/01/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Song Xudong 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "songxudong@st.gxu.edu.cn";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

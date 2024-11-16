@@ -4660,11 +4660,11 @@ body[data-type='about'] #web_bg {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
-  background: -webkit-linear-gradient(330deg, #ff27e8 0, #ff8000 100%);
-  background: -moz-linear-gradient(330deg, #ff27e8 0, #ff8000 100%);
-  background: -o-linear-gradient(330deg, #ff27e8 0, #ff8000 100%);
-  background: -ms-linear-gradient(330deg, #ff27e8 0, #ff8000 100%);
-  background: linear-gradient(120deg, #ff27e8 0, #ff8000 100%);
+  background: -webkit-linear-gradient(330deg, #bc95c6 0, #7dc4cc 100%);
+  background: -moz-linear-gradient(330deg, #bc95c6 0, #7dc4cc 100%);
+  background: -o-linear-gradient(330deg, #bc95c6 0, #7dc4cc 100%);
+  background: -ms-linear-gradient(330deg, #bc95c6 0, #7dc4cc 100%);
+  background: linear-gradient(120deg, #bc95c6 0, #7dc4cc 100%);
   color: var(--anzhiyu-white);
   background-size: 200%;
   -webkit-animation: gradient 15s ease infinite;
@@ -4774,16 +4774,6 @@ body[data-type='about'] #web_bg {
   width: 143px;
   height: 18px;
   margin-right: 0.5rem;
-}
-.author-content-item.game-yuanshen::after {
-  -webkit-box-shadow: 0 -69px 203px 11px #575d8b inset;
-  box-shadow: 0 -69px 203px 11px #575d8b inset;
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
 }
 .author-content-item.comic-content {
   width: 39%;
