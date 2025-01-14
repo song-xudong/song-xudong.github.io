@@ -205,4 +205,4 @@ const CountdownTimer = (() => {
 const config = {
     targetDate: "2025-01-29", // 目标日期
     targetName: "春节", // 名称
-          }
+    }
