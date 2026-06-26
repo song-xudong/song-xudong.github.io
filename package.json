@@ -1,19 +1,37 @@
 {
-  "name": "hugo-blox-dev-portfolio-free",
+  "name": "song-xudong.github.io",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
-  "description": "Modern developer portfolio template for Hugo Blox with Tailwind CSS v4 - Free version",
+  "description": "Song Xudong personal blog powered by Hexo and AnZhiYu.",
+  "hexo": {
+    "version": "7.3.0"
+  },
   "scripts": {
-    "dev": "hugo server --disableFastRender",
-    "build": "hugo --minify && pnpm run pagefind",
-    "pagefind": "pagefind --site public"
+    "clean": "hexo clean",
+    "build": "hexo clean && hexo generate",
+    "dev": "hexo server --draft --port 1313",
+    "server": "hexo server --port 1313",
+    "migrate:old": "node tools/migrate-old-static.js"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.12",
-    "@tailwindcss/typography": "^0.5.10",
-    "pagefind": "^1.4.0",
-    "preact": "^10.27.2",
-    "tailwindcss": "^4.1.12"
+    "hexo": "^7.3.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-search": "^2.4.3",
+    "hexo-generator-sitemap": "^3.0.1",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.1",
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-renderer-stylus": "^3.0.1",
+    "hexo-server": "^3.0.0",
+    "hexo-wordcount": "^6.0.1"
+  },
+  "devDependencies": {
+    "cheerio": "^1.0.0",
+    "hexo-cli": "^4.3.2",
+    "turndown": "^7.2.0"
   }
 }

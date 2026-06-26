@@ -1,0 +1,173 @@
+menu:
+  Blog:
+    总览: /archives/ || anzhiyu-icon-box-archive
+    分类: /categories/ || anzhiyu-icon-shapes
+    标签: /tags/ || anzhiyu-icon-tags
+  关于本人: /about/ || anzhiyu-icon-paper-plane
+  留言板: /comments/ || anzhiyu-icon-envelope
+
+social:
+  Github: https://github.com/song-xudong || anzhiyu-icon-github
+
+author_status:
+  enable: true
+  statusImg: /img/touxiang.png
+  skills:
+    - 生物信息研究生
+    - 数据分析与科研记录
+    - 分享与热心帮助
+
+local_search:
+  enable: true
+  preload: true
+  CDN:
+
+favicon: /favicon.ico
+
+avatar:
+  img: /img/touxiang.png
+  effect: false
+
+index_img: false
+default_top_img: false
+
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  position: left
+  default_cover:
+    - /img/default_cover.jpg
+
+error_img:
+  flink: /img/friend_404.gif
+  post_page: /img/404.jpg
+
+post_meta:
+  page:
+    date_type: created
+    date_format: simple
+    categories: true
+    tags: true
+    label: false
+  post:
+    date_type: both
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+    unread: false
+
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
+
+comments:
+  use: false
+  text: true
+
+reward:
+  enable: false
+
+post_copyright:
+  enable: true
+  decode: false
+  author_href: https://github.com/song-xudong
+  location: 中国
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  avatarSinks: false
+
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: true
+    description: '<div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255,255,255,.8);">这有关于<b style="color:#fff">生物信息学</b>相关的学习经历和成果，还有<b style="color:#fff">个人经历</b>和<b style="color:#fff">日常分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255,255,255,.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div>'
+    name_link: /
+  card_announcement:
+    enable: true
+    content: 博客还在建设中，更多内容正在迁移，欢迎你的来访！
+  card_weixin:
+    enable: false
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: false
+
+busuanzi:
+  site_uv: false
+  site_pv: false
+  page_pv: false
+
+runtimeshow:
+  enable: true
+  publish_date: 10/11/2024 00:00:00
+
+newest_comments:
+  enable: false
+
+translate:
+  enable: true
+  default: 繁
+  rightMenuMsgDefault: 转为繁体
+  defaultEncoding: 2
+  translateDelay: 0
+  msgToTraditionalChinese: 繁
+  msgToSimplifiedChinese: 简
+  rightMenuMsgToTraditionalChinese: 转为繁体
+  rightMenuMsgToSimplifiedChinese: 转为简体
+
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: 1
+  start:
+  end:
+
+footer:
+  owner:
+    enable: true
+    since: 2024
+  custom_text:
+  runtime:
+    enable: false
+  bdageitem:
+    enable: false
+  socialBar:
+    enable: false
+  list:
+    enable: false
+
+preloader:
+  enable: true
+  source: 3
+  pace_css_url:
+  avatar: /img/touxiang.png
