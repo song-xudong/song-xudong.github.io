@@ -57,17 +57,22 @@ export const profileConfig: ProfileConfig = {
 	name: "Song Xudong",
 	bio: "Biomedical engineering PhD student focusing on neuroimaging, complex networks, and Alzheimer disease.",
 	links: [
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github", // Visit https://icones.js.org/ for icon codes
-			// You will need to install the corresponding icon set if it's not already included
-			// `pnpm add @iconify-json/<icon-set-name>`
-			url: "https://github.com/song-xudong",
-		},
+		// {
+		// 	name: "GitHub",
+		// 	icon: "fa6-brands:github", // Visit https://icones.js.org/ for icon codes
+		// 	// You will need to install the corresponding icon set if it's not already included
+		// 	// `pnpm add @iconify-json/<icon-set-name>`
+		// 	url: "https://github.com/song-xudong",
+		// },
 		{
 			name: "Homepage",
 			icon: "fa6-solid:house",
 			url: "https://song-xudong.github.io/",
+		},
+		{
+			name: "Email",
+			icon: "fa6-solid:envelope",
+			url: "mailto:songxudong@hainanu.edu.cn",
 		},
 		{
 			name: "GitHub",
