@@ -3,6 +3,8 @@ $ErrorActionPreference = "Stop"
 $projectRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 $gitSafePath = ($projectRoot.Path -replace "\\", "/")
 $previewUrl = "http://127.0.0.1:4321/"
+$githubAccount = "song-xudong"
+$autoUploadDelaySeconds = 5
 
 function Write-Step {
 	param([string]$Message)
@@ -12,7 +14,7 @@ function Write-Step {
 
 function Invoke-Git {
 	param([Parameter(ValueFromRemainingArguments = $true)][string[]]$GitArgs)
-	& git -c "safe.directory=$gitSafePath" -c "http.sslBackend=openssl" @GitArgs
+	& git -c "safe.directory=$gitSafePath" -c "http.sslBackend=openssl" -c "credential.https://github.com.username=$githubAccount" @GitArgs
 	if ($LASTEXITCODE -ne 0) {
 		throw "Git command failed: git $($GitArgs -join ' ')"
 	}
@@ -38,8 +40,9 @@ try {
 	Set-Location $projectRoot
 	$env:ASTRO_TELEMETRY_DISABLED = "1"
 
-	Write-Host "Fuwari preview and GitHub upload tool" -ForegroundColor Green
+	Write-Host "Fuwari preview and automatic GitHub upload tool" -ForegroundColor Green
 	Write-Host "Project: $($projectRoot.Path)"
+	Write-Host "GitHub account: $githubAccount"
 
 	Write-Step "Starting local preview"
 	$listener = Get-NetTCPConnection -LocalPort 4321 -State Listen -ErrorAction SilentlyContinue
@@ -63,16 +66,16 @@ try {
 	Write-Host "Preview opened: $previewUrl" -ForegroundColor Green
 
 	Write-Host ""
-	Write-Host "Review the page in your browser." -ForegroundColor Yellow
-	$answer = Read-Host "Press Enter to check, build, commit and upload. Type q then Enter to cancel"
-	if ($answer -match "^(q|Q)$") {
-		Write-Host "Upload canceled. Local preview remains available at $previewUrl" -ForegroundColor Yellow
-		exit 0
+	Write-Host "Auto upload will start in $autoUploadDelaySeconds seconds. Close this window now to cancel." -ForegroundColor Yellow
+	for ($remaining = $autoUploadDelaySeconds; $remaining -gt 0; $remaining--) {
+		Write-Host "Starting in $remaining..."
+		Start-Sleep -Seconds 1
 	}
 
 	Write-Step "Checking GitHub remote"
+	Invoke-Git config credential.https://github.com.username $githubAccount
 	Invoke-Git fetch origin main
-	$behind = (& git -c "safe.directory=$gitSafePath" rev-list --count HEAD..origin/main).Trim()
+	$behind = (& git -c "safe.directory=$gitSafePath" -c "credential.https://github.com.username=$githubAccount" rev-list --count HEAD..origin/main).Trim()
 	if ([int]$behind -gt 0) {
 		throw "Local branch is behind origin/main by $behind commit(s). Pull or resolve this before uploading."
 	}
