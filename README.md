@@ -87,7 +87,7 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm new-post <filename>` | Create a new post                                   |
 | `pnpm astro ...`           | Run CLI commands like `astro add`, `astro check`    |
 | `pnpm astro --help`        | Get help using the Astro CLI                        |
-
+## test
 ## ✏️ Contributing
 
 Check out the [Contributing Guide](https://github.com/saicaca/fuwari/blob/main/CONTRIBUTING.md) for details on how to contribute to this project.
